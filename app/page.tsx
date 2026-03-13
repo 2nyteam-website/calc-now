@@ -12,6 +12,14 @@ import {
   Calendar,
   Percent,
   ArrowLeftRight,
+  Car,
+  BarChart3,
+  PieChart,
+  Flame,
+  Activity,
+  CalendarDays,
+  GraduationCap,
+  Lock,
   type LucideIcon,
 } from "lucide-react";
 
@@ -32,6 +40,9 @@ const CALCULATORS: { category: string; tools: Tool[] }[] = [
       { name: "Salary Calculator", href: "/calculators/salary", desc: "Convert between hourly, monthly, annual salary", icon: Wallet },
       { name: "Tip Calculator", href: "/calculators/tip", desc: "Split bills and calculate tips easily", icon: Receipt },
       { name: "Discount Calculator", href: "/calculators/discount", desc: "Find final price after discounts", icon: Tag },
+      { name: "Auto Loan Calculator", href: "/calculators/auto-loan", desc: "Car loan payments with trade-in value", icon: Car },
+      { name: "ROI Calculator", href: "/calculators/roi", desc: "Return on investment and annualized ROI", icon: BarChart3 },
+      { name: "Margin & Markup", href: "/calculators/margin-markup", desc: "Profit margin, markup, and selling price", icon: PieChart },
     ],
   },
   {
@@ -39,6 +50,8 @@ const CALCULATORS: { category: string; tools: Tool[] }[] = [
     tools: [
       { name: "BMI Calculator", href: "/calculators/bmi", desc: "Body Mass Index with health categories", icon: Heart },
       { name: "Age Calculator", href: "/calculators/age", desc: "Exact age in years, months, and days", icon: Calendar },
+      { name: "TDEE Calculator", href: "/calculators/tdee", desc: "Daily calorie needs based on activity level", icon: Flame },
+      { name: "Body Fat Calculator", href: "/calculators/body-fat", desc: "Body fat % using US Navy method", icon: Activity },
     ],
   },
   {
@@ -46,6 +59,14 @@ const CALCULATORS: { category: string; tools: Tool[] }[] = [
     tools: [
       { name: "Percentage Calculator", href: "/calculators/percentage", desc: "3-in-1 percentage calculations", icon: Percent },
       { name: "Unit Converter", href: "/calculators/unit-converter", desc: "Length, weight, and temperature conversions", icon: ArrowLeftRight },
+    ],
+  },
+  {
+    category: "Everyday Tools",
+    tools: [
+      { name: "Date Calculator", href: "/calculators/date", desc: "Date difference and add/subtract days", icon: CalendarDays },
+      { name: "GPA Calculator", href: "/calculators/gpa", desc: "Calculate your college GPA", icon: GraduationCap },
+      { name: "Password Generator", href: "/calculators/password-generator", desc: "Generate secure random passwords", icon: Lock },
     ],
   },
 ];

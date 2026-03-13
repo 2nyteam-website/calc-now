@@ -5,6 +5,8 @@ const BASE_URL = "https://www.calcnow.cc";
 const CALCULATORS = [
   "compound-interest", "loan", "mortgage", "percentage", "bmi",
   "salary", "tip", "age", "discount", "unit-converter",
+  "auto-loan", "roi", "margin-markup", "tdee", "body-fat",
+  "date", "gpa", "password-generator",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

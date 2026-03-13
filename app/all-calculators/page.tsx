@@ -6,77 +6,51 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "All Calculators",
   description:
-    "Browse all free online calculators on CalcNow. Finance, health, math, and conversion tools — 100% browser-based.",
+    "Browse all free online calculators on CalcNow. Finance, health, math, and everyday tools — 100% browser-based.",
   alternates: { canonical: "/all-calculators" },
 };
 
 const CALCULATORS = [
   {
     category: "Finance",
-    count: 6,
+    count: 9,
     tools: [
-      {
-        name: "Compound Interest Calculator",
-        href: "/calculators/compound-interest",
-        desc: "Calculate future value with compound interest over time.",
-      },
-      {
-        name: "Loan Calculator",
-        href: "/calculators/loan",
-        desc: "Monthly payments, total interest, and amortization for any loan.",
-      },
-      {
-        name: "Mortgage Calculator",
-        href: "/calculators/mortgage",
-        desc: "Home loan payments with down payment and property tax estimates.",
-      },
-      {
-        name: "Salary Calculator",
-        href: "/calculators/salary",
-        desc: "Convert between hourly, weekly, monthly, and annual salary.",
-      },
-      {
-        name: "Tip Calculator",
-        href: "/calculators/tip",
-        desc: "Split bills and calculate tips for any group size.",
-      },
-      {
-        name: "Discount Calculator",
-        href: "/calculators/discount",
-        desc: "Find the final price after single or stacked discounts.",
-      },
+      { name: "Compound Interest Calculator", href: "/calculators/compound-interest", desc: "Calculate future value with compound interest over time." },
+      { name: "Loan Calculator", href: "/calculators/loan", desc: "Monthly payments, total interest, and amortization for any loan." },
+      { name: "Mortgage Calculator", href: "/calculators/mortgage", desc: "Home loan payments with down payment and interest rate." },
+      { name: "Auto Loan Calculator", href: "/calculators/auto-loan", desc: "Car loan payments with down payment and trade-in value." },
+      { name: "ROI Calculator", href: "/calculators/roi", desc: "Return on investment with annualized ROI." },
+      { name: "Margin & Markup Calculator", href: "/calculators/margin-markup", desc: "Profit margin, markup percentage, and selling price." },
+      { name: "Salary Calculator", href: "/calculators/salary", desc: "Convert between hourly, weekly, monthly, and annual salary." },
+      { name: "Tip Calculator", href: "/calculators/tip", desc: "Split bills and calculate tips for any group size." },
+      { name: "Discount Calculator", href: "/calculators/discount", desc: "Find the final price after single or stacked discounts." },
     ],
   },
   {
     category: "Health & Life",
-    count: 2,
+    count: 4,
     tools: [
-      {
-        name: "BMI Calculator",
-        href: "/calculators/bmi",
-        desc: "Body Mass Index with WHO health categories.",
-      },
-      {
-        name: "Age Calculator",
-        href: "/calculators/age",
-        desc: "Exact age in years, months, and days from your birthdate.",
-      },
+      { name: "BMI Calculator", href: "/calculators/bmi", desc: "Body Mass Index with WHO health categories." },
+      { name: "TDEE Calculator", href: "/calculators/tdee", desc: "Total Daily Energy Expenditure and calorie goals." },
+      { name: "Body Fat Calculator", href: "/calculators/body-fat", desc: "Body fat percentage using the US Navy method." },
+      { name: "Age Calculator", href: "/calculators/age", desc: "Exact age in years, months, and days from your birthdate." },
     ],
   },
   {
     category: "Math & Conversion",
     count: 2,
     tools: [
-      {
-        name: "Percentage Calculator",
-        href: "/calculators/percentage",
-        desc: "3-in-1 percentage calculations for any scenario.",
-      },
-      {
-        name: "Unit Converter",
-        href: "/calculators/unit-converter",
-        desc: "Length, weight, and temperature conversions.",
-      },
+      { name: "Percentage Calculator", href: "/calculators/percentage", desc: "3-in-1 percentage calculations for any scenario." },
+      { name: "Unit Converter", href: "/calculators/unit-converter", desc: "Length, weight, and temperature conversions." },
+    ],
+  },
+  {
+    category: "Everyday Tools",
+    count: 3,
+    tools: [
+      { name: "Date Calculator", href: "/calculators/date", desc: "Date difference and add or subtract days from a date." },
+      { name: "GPA Calculator", href: "/calculators/gpa", desc: "Calculate your college GPA with dynamic course list." },
+      { name: "Password Generator", href: "/calculators/password-generator", desc: "Generate secure random passwords with custom options." },
     ],
   },
 ];
@@ -87,11 +61,10 @@ export default function AllCalculatorsPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">All Calculators</h1>
         <p className="text-muted-foreground mt-2">
-          Browse our full collection of free online calculators. All tools run
-          entirely in your browser.
+          Browse our full collection of free online calculators. All tools run entirely in your browser.
         </p>
         <Badge variant="secondary" className="mt-2">
-          10 Calculators — 100% Free
+          18 Calculators — 100% Free
         </Badge>
       </div>
 
