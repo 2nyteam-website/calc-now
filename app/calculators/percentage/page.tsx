@@ -30,7 +30,7 @@ export default function PercentageCalculator() {
   const result2 = (parseFloat(y2) || 0) !== 0 ? ((parseFloat(x2) || 0) / (parseFloat(y2) || 0)) * 100 : 0;
   const fromVal = parseFloat(from3) || 0;
   const toVal = parseFloat(to3) || 0;
-  const result3 = fromVal !== 0 ? ((toVal - fromVal) / Math.abs(fromVal)) * 100 : 0;
+  const result3 = fromVal !== 0 ? ((toVal - fromVal) / Math.abs(fromVal)) * 100 : null;
 
   return (
     <div className="space-y-6">
@@ -120,12 +120,18 @@ export default function PercentageCalculator() {
               </div>
               <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
                 <p className="text-sm text-blue-600">Percentage Change</p>
-                <p className={`text-4xl font-bold ${result3 >= 0 ? "text-green-600" : "text-red-600"}`}>
-                  {result3 >= 0 ? "+" : ""}{fmt(result3)}%
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {result3 >= 0 ? "Increase" : "Decrease"} of {fmt(Math.abs(result3))}% from {from3} to {to3}
-                </p>
+                {result3 !== null ? (
+                  <>
+                    <p className={`text-4xl font-bold ${result3 >= 0 ? "text-green-600" : "text-red-600"}`}>
+                      {result3 >= 0 ? "+" : ""}{fmt(result3)}%
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {result3 >= 0 ? "Increase" : "Decrease"} of {fmt(Math.abs(result3))}% from {from3} to {to3}
+                    </p>
+                  </>
+                ) : (
+                  <p className="text-4xl font-bold text-muted-foreground">N/A</p>
+                )}
               </div>
             </CardContent>
           </Card>
