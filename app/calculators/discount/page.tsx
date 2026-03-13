@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -44,15 +44,15 @@ export default function DiscountCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="price">Original Price ($)</Label>
-              <Input id="price" type="number" className="h-12" min="0" step="0.01" value={originalPrice} onChange={(e) => setOriginalPrice(e.target.value)} />
+              <CurrencyInput id="price" value={originalPrice} onChange={setOriginalPrice} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="disc1">Discount (%)</Label>
-              <Input id="disc1" type="number" className="h-12" min="0" max="100" value={discount1} onChange={(e) => setDiscount1(e.target.value)} />
+              <CurrencyInput id="disc1" value={discount1} onChange={setDiscount1} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="disc2">Additional Discount (%, optional)</Label>
-              <Input id="disc2" type="number" className="h-12" min="0" max="100" value={discount2} onChange={(e) => setDiscount2(e.target.value)} placeholder="e.g., extra 10% off" />
+              <CurrencyInput id="disc2" value={discount2} onChange={setDiscount2} suffix="%" placeholder="e.g., extra 10% off" />
             </div>
           </CardContent>
         </Card>
@@ -99,19 +99,24 @@ export default function DiscountCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Discount Calculator</h2>
           <p>
-            Shopping sales can be confusing, especially when multiple discounts are stacked. This discount calculator instantly shows you the final price and total savings after applying one or two percentage discounts. It also calculates the effective total discount percentage, which is particularly useful when comparing stacked discounts.
+            Shopping sales can be confusing, especially when <strong>multiple discounts</strong> are stacked. This <strong>discount calculator</strong> instantly shows you the final price and total savings after applying one or two percentage discounts. It also calculates the <strong>effective total discount percentage</strong>, which is particularly useful when comparing stacked discounts.
           </p>
           <p>
-            A common misconception is that 20% off plus an additional 10% off equals 30% off. In reality, the second discount applies to the already-reduced price. So 20% + 10% actually gives you a 28% total discount, not 30%. This calculator shows the effective discount clearly so you know exactly what you are getting.
+            A common misconception is that 20% off plus an additional 10% off equals 30% off. In reality, the second discount applies to the <strong>already-reduced price</strong>. So 20% + 10% actually gives you a 28% total discount, not 30%. This calculator shows the effective discount clearly so you know exactly what you are getting.
           </p>
           <p>
-            The formula is simple: Final Price = Original Price x (1 - Discount1/100) x (1 - Discount2/100). The savings are calculated as Original Price minus Final Price. This tool is perfect for Black Friday deals, coupon stacking, clearance sales, or any situation where you need to quickly figure out the actual price.
+            The formula is simple: <strong>Final Price = Original Price x (1 - Discount1/100) x (1 - Discount2/100)</strong>. The savings are calculated as Original Price minus Final Price. This tool is perfect for <strong>Black Friday deals</strong>, coupon stacking, clearance sales, or any situation where you need to quickly figure out the actual price.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter the <strong>original price</strong> of the item.</li>
+            <li>Enter the <strong>discount percentage</strong>.</li>
+            <li>If there is an <strong>additional discount</strong> (like an extra coupon or member discount), enter it in the second field. Leave it empty if there is only one discount.</li>
+          </ul>
           <p>
-            Enter the original price of the item, then the discount percentage. If there is an additional discount (like an extra coupon or member discount), enter it in the second field. Leave the additional discount empty if there is only one discount. Results update instantly showing your final price, savings, and effective discount rate.
+            Results update instantly showing your final price, savings, and effective discount rate.
           </p>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">

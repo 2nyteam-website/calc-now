@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CurrencyInput from "@/components/currency-input";
 
 function getBmiCategory(bmi: number): { label: string; color: string } {
   if (bmi < 18.5) return { label: "Underweight", color: "text-blue-600" };
@@ -66,27 +66,27 @@ export default function BmiCalculator() {
               <>
                 <div className="space-y-2">
                   <Label htmlFor="weightKg">Weight (kg)</Label>
-                  <Input id="weightKg" type="number" className="h-12" min="0" step="0.1" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} />
+                  <CurrencyInput id="weightKg" value={weightKg} onChange={setWeightKg} suffix="kg" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="heightCm">Height (cm)</Label>
-                  <Input id="heightCm" type="number" className="h-12" min="0" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} />
+                  <CurrencyInput id="heightCm" value={heightCm} onChange={setHeightCm} suffix="cm" />
                 </div>
               </>
             ) : (
               <>
                 <div className="space-y-2">
                   <Label htmlFor="weightLbs">Weight (lbs)</Label>
-                  <Input id="weightLbs" type="number" className="h-12" min="0" step="0.1" value={weightLbs} onChange={(e) => setWeightLbs(e.target.value)} />
+                  <CurrencyInput id="weightLbs" value={weightLbs} onChange={setWeightLbs} suffix="lbs" />
                 </div>
                 <div className="flex gap-3">
                   <div className="space-y-2 flex-1">
                     <Label htmlFor="heightFt">Height (ft)</Label>
-                    <Input id="heightFt" type="number" className="h-12" min="0" value={heightFt} onChange={(e) => setHeightFt(e.target.value)} />
+                    <CurrencyInput id="heightFt" value={heightFt} onChange={setHeightFt} suffix="ft" />
                   </div>
                   <div className="space-y-2 flex-1">
                     <Label htmlFor="heightIn">Height (in)</Label>
-                    <Input id="heightIn" type="number" className="h-12" min="0" max="11" value={heightIn} onChange={(e) => setHeightIn(e.target.value)} />
+                    <CurrencyInput id="heightIn" value={heightIn} onChange={setHeightIn} suffix="in" />
                   </div>
                 </div>
               </>
@@ -137,10 +137,10 @@ export default function BmiCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the BMI Calculator</h2>
           <p>
-            Body Mass Index (BMI) is a widely used screening tool to assess whether a person has a healthy body weight relative to their height. It is calculated by dividing weight in kilograms by height in meters squared (BMI = kg/m2). For imperial units, the formula is BMI = (weight in lbs x 703) / (height in inches)2. While BMI does not directly measure body fat, it correlates with more direct measures of body fat and is a useful initial screening tool.
+            <strong>Body Mass Index (BMI)</strong> is a widely used screening tool to assess whether a person has a healthy body weight relative to their height. It is calculated by dividing weight in kilograms by height in meters squared (<strong>BMI = kg/m²</strong>). For imperial units, the formula is BMI = (weight in lbs × 703) / (height in inches)². While BMI does not directly measure body fat, it correlates with more direct measures of body fat and is a useful initial screening tool.
           </p>
           <p>
-            The World Health Organization (WHO) classifies BMI into four categories: Underweight (below 18.5), Normal weight (18.5 to 24.9), Overweight (25.0 to 29.9), and Obese (30.0 and above). These categories are associated with different health risk levels. However, BMI has limitations — it does not distinguish between muscle and fat mass, and may not be accurate for athletes, elderly individuals, or people with certain body types.
+            The <strong>World Health Organization (WHO)</strong> classifies BMI into four categories: Underweight (below 18.5), Normal weight (<strong>18.5 to 24.9</strong>), Overweight (25.0 to 29.9), and Obese (30.0 and above). These categories are associated with different <strong>health risk levels</strong>. However, BMI has limitations — it does not distinguish between muscle and fat mass, and may not be accurate for athletes, elderly individuals, or people with certain body types.
           </p>
           <p>
             This tool supports both metric and imperial units for your convenience. Always consult a healthcare professional for a comprehensive health assessment beyond BMI alone.
@@ -148,9 +148,12 @@ export default function BmiCalculator() {
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Select your preferred unit system — Metric (kg and cm) or Imperial (lbs, feet, and inches). Enter your weight and height. Your BMI value and category will appear instantly with a color-coded indicator. The reference chart below the result shows all BMI categories for easy comparison.
-          </p>
+          <ul>
+            <li>Select your preferred unit system — <strong>Metric</strong> (kg and cm) or <strong>Imperial</strong> (lbs, feet, and inches).</li>
+            <li>Enter your weight and height in the input fields.</li>
+            <li>Your BMI value and category will appear instantly with a color-coded indicator.</li>
+            <li>The reference chart below the result shows all BMI categories for easy comparison.</li>
+          </ul>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>

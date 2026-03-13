@@ -150,10 +150,10 @@ export default function AgeCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Age Calculator</h2>
           <p>
-            This age calculator determines your exact age in years, months, and days from your date of birth. It accounts for varying month lengths and leap years to provide an accurate result. Beyond the basic age breakdown, it also shows your total age in months, weeks, and days, plus a countdown to your next birthday.
+            This <strong>age calculator</strong> determines your exact age in <strong>years, months, and days</strong> from your date of birth. It accounts for varying month lengths and <strong>leap years</strong> to provide an accurate result. Beyond the basic age breakdown, it also shows your total age in months, weeks, and days, plus a countdown to your <strong>next birthday</strong>.
           </p>
           <p>
-            Age calculation might seem simple, but handling edge cases like month boundaries and leap years correctly requires careful logic. For example, being born on January 31st and calculating age on February 28th involves special handling since February has fewer days. This calculator handles all such cases correctly using proper date arithmetic.
+            Age calculation might seem simple, but handling edge cases like <strong>month boundaries</strong> and leap years correctly requires careful logic. For example, being born on January 31st and calculating age on February 28th involves special handling since February has fewer days. This calculator handles all such cases correctly using proper <strong>date arithmetic</strong>.
           </p>
           <p>
             This tool is useful for official documentation, birthday planning, age verification, or just satisfying your curiosity about exactly how long you have been alive. All calculations are performed in your browser based on your system clock.
@@ -161,9 +161,12 @@ export default function AgeCalculator() {
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Simply select or type your date of birth using the date picker. The calculator instantly shows your age broken down into years, months, and days, along with additional statistics like total days alive and days until your next birthday. The date must be in the past.
-          </p>
+          <ul>
+            <li>Select or type your <strong>date of birth</strong> using the date picker.</li>
+            <li>The calculator instantly shows your age broken down into years, months, and days.</li>
+            <li>View additional statistics like <strong>total days alive</strong> and days until your next birthday.</li>
+            <li>The date must be in the past.</li>
+          </ul>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>

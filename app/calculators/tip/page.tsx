@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,7 +47,7 @@ export default function TipCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="bill">Bill Amount ($)</Label>
-              <Input id="bill" type="number" className="h-12" min="0" step="0.01" value={bill} onChange={(e) => setBill(e.target.value)} />
+              <CurrencyInput id="bill" value={bill} onChange={setBill} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label>Tip Percentage</Label>
@@ -63,11 +63,11 @@ export default function TipCalculator() {
                   </Button>
                 ))}
               </div>
-              <Input id="tipPct" type="number" className="h-12" min="0" value={tipPct} onChange={(e) => setTipPct(e.target.value)} placeholder="Custom %" />
+              <CurrencyInput id="tipPct" value={tipPct} onChange={setTipPct} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="people">Number of People</Label>
-              <Input id="people" type="number" className="h-12" min="1" value={people} onChange={(e) => setPeople(e.target.value)} />
+              <CurrencyInput id="people" value={people} onChange={setPeople} />
             </div>
           </CardContent>
         </Card>
@@ -110,19 +110,24 @@ export default function TipCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Tip Calculator</h2>
           <p>
-            Tipping is a customary practice in many countries, especially in the United States where it forms a significant portion of service workers&apos; income. This tip calculator helps you quickly determine the appropriate tip amount based on your bill and desired tip percentage, and evenly splits the total among your group.
+            <strong>Tipping</strong> is a customary practice in many countries, especially in the United States where it forms a significant portion of <strong>service workers&apos; income</strong>. This tip calculator helps you quickly determine the appropriate tip amount based on your bill and desired tip percentage, and evenly splits the total among your group.
           </p>
           <p>
-            The standard tip range in the US is 15-20% for sit-down restaurants. For exceptional service, 20-25% is common. For counter service or takeout, 10-15% is typical. Delivery services generally warrant 15-20%. Use the preset buttons for common percentages or enter a custom amount. The calculator handles bill splitting automatically — just enter the number of people in your group.
+            The <strong>standard tip range</strong> in the US is 15-20% for sit-down restaurants. For exceptional service, 20-25% is common. For counter service or takeout, 10-15% is typical. Delivery services generally warrant 15-20%. Use the preset buttons for common percentages or enter a custom amount. The calculator handles <strong>bill splitting</strong> automatically — just enter the number of people in your group.
           </p>
           <p>
-            The formula is straightforward: Tip = Bill Amount x (Tip Percentage / 100). The total per person is (Bill + Tip) / Number of People. All calculations happen instantly in your browser.
+            The formula is straightforward: <strong>Tip = Bill Amount x (Tip Percentage / 100)</strong>. The total per person is (Bill + Tip) / Number of People. All calculations happen instantly in your browser.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter your <strong>bill amount</strong> in dollars.</li>
+            <li>Select a <strong>tip percentage</strong> using the preset buttons or type a custom percentage.</li>
+            <li>Enter the <strong>number of people</strong> splitting the bill.</li>
+          </ul>
           <p>
-            Enter your bill amount, select a tip percentage using the preset buttons or type a custom percentage, and enter the number of people splitting the bill. The results show the tip amount, total bill, and each person&apos;s share instantly. Adjusting any input updates results in real time.
+            The results show the tip amount, total bill, and each person&apos;s share instantly. Adjusting any input updates results in real time.
           </p>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">

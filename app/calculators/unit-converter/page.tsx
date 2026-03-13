@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CurrencyInput from "@/components/currency-input";
 
 type Category = "length" | "weight" | "temperature";
 
@@ -152,11 +152,10 @@ export default function UnitConverter() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="fromVal">Value</Label>
-                <Input
+                <CurrencyInput
                   id="fromVal"
-                  type="number" className="h-12"
                   value={lastEdited === "from" ? fromValue : formatResult(fromVal)}
-                  onChange={(e) => handleFromValueChange(e.target.value)}
+                  onChange={handleFromValueChange}
                 />
               </div>
             </div>
@@ -183,11 +182,10 @@ export default function UnitConverter() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="toVal">Value</Label>
-                <Input
+                <CurrencyInput
                   id="toVal"
-                  type="number" className="h-12"
                   value={lastEdited === "to" ? toValue : formatResult(toVal)}
-                  onChange={(e) => handleToValueChange(e.target.value)}
+                  onChange={handleToValueChange}
                 />
               </div>
             </div>
@@ -233,10 +231,10 @@ export default function UnitConverter() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Unit Converter</h2>
           <p>
-            This unit converter supports three major categories of measurement: length, weight, and temperature. It handles conversions between both metric and imperial systems, making it useful for travel, cooking, science, engineering, and everyday tasks. All conversions use precise conversion factors for accurate results.
+            This <strong>unit converter</strong> supports three major categories of measurement: <strong>length, weight, and temperature</strong>. It handles conversions between both metric and imperial systems, making it useful for travel, cooking, science, engineering, and everyday tasks. All conversions use precise conversion factors for accurate results.
           </p>
           <p>
-            Length conversions cover millimeters, centimeters, meters, kilometers, inches, feet, yards, and miles. Weight includes milligrams, grams, kilograms, pounds, and ounces. Temperature supports Celsius, Fahrenheit, and Kelvin. The converter uses base-unit conversion internally: all length values convert through meters, all weights through kilograms, and all temperatures through Celsius.
+            Length conversions cover millimeters, centimeters, meters, kilometers, inches, feet, yards, and miles. Weight includes milligrams, grams, kilograms, pounds, and ounces. Temperature supports <strong>Celsius, Fahrenheit, and Kelvin</strong>. The converter uses <strong>base-unit conversion</strong> internally: all length values convert through meters, all weights through kilograms, and all temperatures through Celsius.
           </p>
           <p>
             The quick reference table below the main converter shows your input value converted to all available units at once, saving time when you need multiple conversions. The swap button lets you instantly reverse the conversion direction.
@@ -244,9 +242,13 @@ export default function UnitConverter() {
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Select a category (Length, Weight, or Temperature), choose your source and target units from the dropdowns, and enter a value. The conversion happens instantly. Use the swap button (arrows) to reverse the direction. The quick reference table below shows the value converted to all units in the selected category.
-          </p>
+          <ul>
+            <li>Select a category: <strong>Length</strong>, <strong>Weight</strong>, or <strong>Temperature</strong>.</li>
+            <li>Choose your source and target units from the dropdowns.</li>
+            <li>Enter a value — the conversion happens instantly.</li>
+            <li>Use the swap button (arrows) to reverse the direction.</li>
+            <li>The <strong>quick reference table</strong> below shows the value converted to all units in the selected category.</li>
+          </ul>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>

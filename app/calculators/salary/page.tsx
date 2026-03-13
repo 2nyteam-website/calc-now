@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -77,7 +77,7 @@ export default function SalaryCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="amount">Salary Amount ($)</Label>
-              <Input id="amount" type="number" className="h-12" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <CurrencyInput id="amount" value={amount} onChange={setAmount} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label>Pay Period</Label>
@@ -96,11 +96,11 @@ export default function SalaryCalculator() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="hpw">Hours per Week</Label>
-              <Input id="hpw" type="number" className="h-12" min="1" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(e.target.value)} />
+              <CurrencyInput id="hpw" value={hoursPerWeek} onChange={setHoursPerWeek} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="wpy">Weeks per Year</Label>
-              <Input id="wpy" type="number" className="h-12" min="1" value={weeksPerYear} onChange={(e) => setWeeksPerYear(e.target.value)} />
+              <CurrencyInput id="wpy" value={weeksPerYear} onChange={setWeeksPerYear} />
             </div>
           </CardContent>
         </Card>
@@ -141,19 +141,24 @@ export default function SalaryCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Salary Calculator</h2>
           <p>
-            Whether you are evaluating a job offer, negotiating a raise, or converting between pay periods, this salary calculator makes it easy to see your earnings across all time frames. It converts between hourly, daily, weekly, bi-weekly, monthly, and annual pay using your specific work schedule.
+            Whether you are evaluating a <strong>job offer</strong>, negotiating a raise, or converting between pay periods, this <strong>salary calculator</strong> makes it easy to see your earnings across all time frames. It converts between hourly, daily, weekly, bi-weekly, monthly, and <strong>annual pay</strong> using your specific work schedule.
           </p>
           <p>
-            The calculation assumes a standard work schedule that you can customize. By default, it uses 40 hours per week and 52 weeks per year. If you work part-time (e.g., 20 hours per week) or take unpaid time off (e.g., 50 weeks per year), adjust these settings for accurate results. Daily pay assumes a 5-day work week. Bi-weekly pay is calculated as annual divided by 26 pay periods.
+            The calculation assumes a standard work schedule that you can customize. By default, it uses <strong>40 hours per week</strong> and 52 weeks per year. If you work part-time (e.g., 20 hours per week) or take unpaid time off (e.g., 50 weeks per year), adjust these settings for accurate results. Daily pay assumes a <strong>5-day work week</strong>. Bi-weekly pay is calculated as annual divided by 26 pay periods.
           </p>
           <p>
-            This tool is especially useful when comparing job offers that quote pay in different periods. A $25/hour job may sound different from a $52,000/year salary, but they are nearly equivalent at 40 hours per week. Use this calculator to make apples-to-apples comparisons.
+            This tool is especially useful when comparing job offers that quote pay in different periods. A $25/hour job may sound different from a $52,000/year salary, but they are nearly equivalent at 40 hours per week. Use this calculator to make <strong>apples-to-apples comparisons</strong>.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter your <strong>salary amount</strong> in dollars.</li>
+            <li>Select the <strong>pay period</strong> (per hour, day, week, month, or year).</li>
+            <li>Optionally adjust the <strong>hours per week</strong> and <strong>weeks per year</strong> if your schedule differs from the standard 40 hours, 52 weeks.</li>
+          </ul>
           <p>
-            Enter your salary amount and select the pay period (per hour, day, week, month, or year). Optionally adjust the hours per week and weeks per year if your schedule differs from the standard 40 hours, 52 weeks. The breakdown on the right instantly shows your equivalent pay for every time period.
+            The breakdown on the right instantly shows your equivalent pay for every time period.
           </p>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">

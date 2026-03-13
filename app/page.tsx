@@ -1,31 +1,51 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  TrendingUp,
+  Landmark,
+  Home as HomeIcon,
+  Wallet,
+  Receipt,
+  Tag,
+  Heart,
+  Calendar,
+  Percent,
+  ArrowLeftRight,
+  type LucideIcon,
+} from "lucide-react";
 
-const CALCULATORS = [
+type Tool = {
+  name: string;
+  href: string;
+  desc: string;
+  icon: LucideIcon;
+};
+
+const CALCULATORS: { category: string; tools: Tool[] }[] = [
   {
     category: "Finance",
     tools: [
-      { name: "Compound Interest Calculator", href: "/calculators/compound-interest", desc: "Calculate future value with compound interest" },
-      { name: "Loan Calculator", href: "/calculators/loan", desc: "Monthly payments, total interest for any loan" },
-      { name: "Mortgage Calculator", href: "/calculators/mortgage", desc: "Home loan payments with down payment" },
-      { name: "Salary Calculator", href: "/calculators/salary", desc: "Convert between hourly, monthly, annual salary" },
-      { name: "Tip Calculator", href: "/calculators/tip", desc: "Split bills and calculate tips easily" },
-      { name: "Discount Calculator", href: "/calculators/discount", desc: "Find final price after discounts" },
+      { name: "Compound Interest Calculator", href: "/calculators/compound-interest", desc: "Calculate future value with compound interest", icon: TrendingUp },
+      { name: "Loan Calculator", href: "/calculators/loan", desc: "Monthly payments, total interest for any loan", icon: Landmark },
+      { name: "Mortgage Calculator", href: "/calculators/mortgage", desc: "Home loan payments with down payment", icon: HomeIcon },
+      { name: "Salary Calculator", href: "/calculators/salary", desc: "Convert between hourly, monthly, annual salary", icon: Wallet },
+      { name: "Tip Calculator", href: "/calculators/tip", desc: "Split bills and calculate tips easily", icon: Receipt },
+      { name: "Discount Calculator", href: "/calculators/discount", desc: "Find final price after discounts", icon: Tag },
     ],
   },
   {
     category: "Health & Life",
     tools: [
-      { name: "BMI Calculator", href: "/calculators/bmi", desc: "Body Mass Index with health categories" },
-      { name: "Age Calculator", href: "/calculators/age", desc: "Exact age in years, months, and days" },
+      { name: "BMI Calculator", href: "/calculators/bmi", desc: "Body Mass Index with health categories", icon: Heart },
+      { name: "Age Calculator", href: "/calculators/age", desc: "Exact age in years, months, and days", icon: Calendar },
     ],
   },
   {
     category: "Math & Conversion",
     tools: [
-      { name: "Percentage Calculator", href: "/calculators/percentage", desc: "3-in-1 percentage calculations" },
-      { name: "Unit Converter", href: "/calculators/unit-converter", desc: "Length, weight, and temperature conversions" },
+      { name: "Percentage Calculator", href: "/calculators/percentage", desc: "3-in-1 percentage calculations", icon: Percent },
+      { name: "Unit Converter", href: "/calculators/unit-converter", desc: "Length, weight, and temperature conversions", icon: ArrowLeftRight },
     ],
   },
 ];
@@ -53,7 +73,10 @@ export default function Home() {
               <Link key={tool.href} href={tool.href}>
                 <Card className="h-full hover:border-blue-400 hover:shadow-md transition-all cursor-pointer">
                   <CardContent className="pt-6">
-                    <h3 className="font-semibold text-sm text-gray-900">{tool.name}</h3>
+                    <div className="flex items-center gap-2 mb-1">
+                      <tool.icon className="w-5 h-5 text-primary" />
+                      <h3 className="font-semibold text-sm text-gray-900">{tool.name}</h3>
+                    </div>
                     <p className="text-muted-foreground text-xs mt-1">{tool.desc}</p>
                   </CardContent>
                 </Card>

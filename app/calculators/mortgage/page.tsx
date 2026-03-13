@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -61,15 +61,15 @@ export default function MortgageCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="price">Home Price ($)</Label>
-              <Input id="price" type="number" className="h-12" min="0" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} />
+              <CurrencyInput id="price" value={homePrice} onChange={setHomePrice} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="down">Down Payment (%)</Label>
-              <Input id="down" type="number" className="h-12" min="0" max="100" value={downPct} onChange={(e) => setDownPct(e.target.value)} />
+              <CurrencyInput id="down" value={downPct} onChange={setDownPct} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <CurrencyInput id="rate" value={rate} onChange={setRate} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="term">Loan Term (Years)</Label>
@@ -78,7 +78,7 @@ export default function MortgageCalculator() {
                 <Button variant={termYears === "20" ? "default" : "outline"} size="sm" onClick={() => setTermYears("20")}>20 yr</Button>
                 <Button variant={termYears === "30" ? "default" : "outline"} size="sm" onClick={() => setTermYears("30")}>30 yr</Button>
               </div>
-              <Input id="term" type="number" className="h-12" min="0" value={termYears} onChange={(e) => setTermYears(e.target.value)} />
+              <CurrencyInput id="term" value={termYears} onChange={setTermYears} />
             </div>
           </CardContent>
         </Card>
@@ -123,20 +123,23 @@ export default function MortgageCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Mortgage Calculator</h2>
           <p>
-            A mortgage is typically the largest financial commitment most people will make. This mortgage calculator helps you understand the true cost of buying a home by factoring in the home price, down payment, interest rate, and loan term. It uses the standard amortization formula to calculate your fixed monthly payment.
+            A <strong>mortgage</strong> is typically the largest financial commitment most people will make. This mortgage calculator helps you understand the <strong>true cost of buying a home</strong> by factoring in the home price, down payment, interest rate, and loan term. It uses the standard <strong>amortization formula</strong> to calculate your fixed monthly payment.
           </p>
           <p>
-            The down payment is a crucial factor. A larger down payment reduces your loan amount, which means lower monthly payments and less total interest paid. Most lenders require at least 3-5% down for conventional loans, while 20% down eliminates the need for private mortgage insurance (PMI). This calculator does not include PMI, property taxes, or homeowners insurance — your actual monthly housing cost may be higher.
+            The <strong>down payment</strong> is a crucial factor. A larger down payment reduces your loan amount, which means lower monthly payments and less total interest paid. Most lenders require at least 3-5% down for conventional loans, while 20% down eliminates the need for <strong>private mortgage insurance (PMI)</strong>. This calculator does not include PMI, property taxes, or homeowners insurance — your actual monthly housing cost may be higher.
           </p>
           <p>
-            Comparing 15-year and 30-year terms is important. A 15-year mortgage has higher monthly payments but saves you tens of thousands of dollars in interest. Use the term buttons to quickly compare options.
+            Comparing <strong>15-year and 30-year terms</strong> is important. A 15-year mortgage has higher monthly payments but saves you tens of thousands of dollars in interest. Use the term buttons to quickly compare options.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Enter the home price you are considering, your down payment as a percentage, the interest rate from your lender, and choose a loan term. Click the 15, 20, or 30 year buttons for quick selection, or type a custom term. All results update instantly.
-          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter the <strong>home price</strong> you are considering.</li>
+            <li>Enter your <strong>down payment</strong> as a percentage.</li>
+            <li>Enter the <strong>interest rate</strong> from your lender.</li>
+            <li>Choose a <strong>loan term</strong> — click the 15, 20, or 30 year buttons for quick selection, or type a custom term.</li>
+          </ul>
           <p>
             The results show your estimated monthly principal and interest payment, down payment amount, total loan amount, total payment over the full term, and total interest cost. Try different scenarios to find the right balance between monthly affordability and total cost.
           </p>

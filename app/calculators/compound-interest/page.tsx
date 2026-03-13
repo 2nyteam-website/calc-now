@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -56,19 +56,19 @@ export default function CompoundInterestCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="principal">Initial Investment ($)</Label>
-              <Input id="principal" type="number" className="h-12" min="0" value={principal} onChange={(e) => setPrincipal(e.target.value)} />
+              <CurrencyInput id="principal" value={principal} onChange={setPrincipal} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="monthly">Monthly Contribution ($)</Label>
-              <Input id="monthly" type="number" className="h-12" min="0" value={monthly} onChange={(e) => setMonthly(e.target.value)} />
+              <CurrencyInput id="monthly" value={monthly} onChange={setMonthly} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <CurrencyInput id="rate" value={rate} onChange={setRate} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="years">Investment Period (Years)</Label>
-              <Input id="years" type="number" className="h-12" min="0" value={years} onChange={(e) => setYears(e.target.value)} />
+              <CurrencyInput id="years" value={years} onChange={setYears} />
             </div>
           </CardContent>
         </Card>
@@ -106,20 +106,29 @@ export default function CompoundInterestCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Compound Interest Calculator</h2>
           <p>
-            Compound interest is one of the most powerful concepts in finance. Unlike simple interest, which is calculated only on the initial principal, compound interest is calculated on the principal plus all previously accumulated interest. This means your money grows exponentially over time, often referred to as &quot;interest on interest.&quot;
+            <strong>Compound interest</strong> is one of the most powerful concepts in finance. Unlike simple interest, which is calculated only on the initial principal, compound interest is calculated on the principal plus all previously accumulated interest. This means your money grows exponentially over time, often referred to as <strong>&quot;interest on interest.&quot;</strong>
           </p>
           <p>
-            This calculator uses the standard compound interest formula: FV = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)], where P is the initial investment, r is the annual interest rate, n is the number of compounding periods per year (monthly = 12), t is the number of years, and PMT is the monthly contribution. The calculation assumes contributions are made at the end of each month.
+            This calculator uses the standard compound interest formula:
+          </p>
+          <p className="font-mono text-sm text-foreground">
+            <strong>FV = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]</strong>
           </p>
           <p>
-            Understanding compound interest is essential for retirement planning, investment decisions, and building long-term wealth. Even small regular contributions can grow into substantial amounts over decades thanks to compounding.
+            Where P is the initial investment, r is the annual interest rate, n is the number of compounding periods per year (monthly = 12), t is the number of years, and PMT is the monthly contribution. The calculation assumes contributions are made at the end of each month.
+          </p>
+          <p>
+            Understanding compound interest is essential for <strong>retirement planning</strong>, investment decisions, and building <strong>long-term wealth</strong>. Even small regular contributions can grow into substantial amounts over decades thanks to compounding.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Enter your initial investment amount, which is the lump sum you are starting with. Then enter your planned monthly contribution — the amount you will add each month. Set the expected annual interest rate (stock market historical average is roughly 7-10%). Finally, enter the number of years you plan to invest.
-          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter your <strong>initial investment</strong> amount — the lump sum you are starting with.</li>
+            <li>Enter your planned <strong>monthly contribution</strong> — the amount you will add each month.</li>
+            <li>Set the expected <strong>annual interest rate</strong> (stock market historical average is roughly 7-10%).</li>
+            <li>Enter the <strong>number of years</strong> you plan to invest.</li>
+          </ul>
           <p>
             The results update in real time as you type. You will see three key numbers: the future value (total amount you will have), total contributions (what you actually put in), and total interest earned (free money from compounding). Compare different scenarios by adjusting the inputs to see how time, rate, and contributions affect your outcome.
           </p>

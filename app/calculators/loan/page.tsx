@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import CurrencyInput from "@/components/currency-input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -55,15 +55,15 @@ export default function LoanCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="amount">Loan Amount ($)</Label>
-              <Input id="amount" type="number" className="h-12" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <CurrencyInput id="amount" value={amount} onChange={setAmount} prefix="$" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <CurrencyInput id="rate" value={rate} onChange={setRate} suffix="%" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="term">Loan Term (Years)</Label>
-              <Input id="term" type="number" className="h-12" min="0" value={term} onChange={(e) => setTerm(e.target.value)} />
+              <CurrencyInput id="term" value={term} onChange={setTerm} />
             </div>
           </CardContent>
         </Card>
@@ -100,10 +100,10 @@ export default function LoanCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Loan Calculator</h2>
           <p>
-            This loan calculator helps you estimate your monthly payments and the total cost of borrowing. It works for personal loans, auto loans, student loans, and any fixed-rate installment loan. The calculator uses the standard amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1], where M is the monthly payment, P is the principal (loan amount), r is the monthly interest rate, and n is the total number of payments.
+            This <strong>loan calculator</strong> helps you estimate your monthly payments and the <strong>total cost of borrowing</strong>. It works for personal loans, auto loans, student loans, and any <strong>fixed-rate installment loan</strong>. The calculator uses the standard amortization formula: <strong>M = P[r(1+r)^n] / [(1+r)^n - 1]</strong>, where M is the monthly payment, P is the principal (loan amount), r is the monthly interest rate, and n is the total number of payments.
           </p>
           <p>
-            Understanding the true cost of a loan goes beyond just the monthly payment. The total interest paid over the life of the loan can be substantial. For example, a $25,000 loan at 6.5% for 5 years costs about $4,360 in interest alone. By shortening the term or finding a lower rate, you can save thousands of dollars.
+            Understanding the true cost of a loan goes beyond just the monthly payment. The <strong>total interest</strong> paid over the life of the loan can be substantial. For example, a $25,000 loan at 6.5% for 5 years costs about $4,360 in interest alone. By shortening the term or finding a <strong>lower rate</strong>, you can save thousands of dollars.
           </p>
           <p>
             This tool is designed for fixed-rate loans with equal monthly payments. Variable-rate loans or loans with balloon payments may require different calculations. All calculations are performed instantly in your browser with no data transmitted to any server.
@@ -111,11 +111,13 @@ export default function LoanCalculator() {
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Enter the <strong>loan amount</strong> — the total amount you plan to borrow.</li>
+            <li>Enter the <strong>annual interest rate</strong> offered by your lender.</li>
+            <li>Enter the <strong>loan term</strong> in years.</li>
+          </ul>
           <p>
-            Enter the loan amount (the total amount you plan to borrow), the annual interest rate offered by your lender, and the loan term in years. Results update instantly as you type. The calculator shows your monthly payment amount, total payment over the life of the loan, and how much of that total is interest.
-          </p>
-          <p>
-            Try adjusting the term to see how shorter or longer repayment periods affect your monthly payment and total interest. A shorter term means higher monthly payments but significantly less interest paid overall.
+            Results update instantly as you type. The calculator shows your monthly payment amount, total payment over the life of the loan, and how much of that total is interest. Try adjusting the term to see how shorter or longer repayment periods affect your monthly payment and total interest. A shorter term means higher monthly payments but significantly less interest paid overall.
           </p>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">

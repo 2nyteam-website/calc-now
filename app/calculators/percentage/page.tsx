@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CurrencyInput from "@/components/currency-input";
 
 function fmt(n: number) {
   return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -58,12 +58,12 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="pct1">Percentage (%)</Label>
-                  <Input id="pct1" type="number" className="h-12" value={pct1} onChange={(e) => setPct1(e.target.value)} />
+                  <CurrencyInput id="pct1" value={pct1} onChange={setPct1} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">% of</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="val1">Number</Label>
-                  <Input id="val1" type="number" className="h-12" value={val1} onChange={(e) => setVal1(e.target.value)} />
+                  <CurrencyInput id="val1" value={val1} onChange={setVal1} />
                 </div>
               </div>
               <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
@@ -84,12 +84,12 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="x2">Number (X)</Label>
-                  <Input id="x2" type="number" className="h-12" value={x2} onChange={(e) => setX2(e.target.value)} />
+                  <CurrencyInput id="x2" value={x2} onChange={setX2} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">is ?% of</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="y2">Number (Y)</Label>
-                  <Input id="y2" type="number" className="h-12" value={y2} onChange={(e) => setY2(e.target.value)} />
+                  <CurrencyInput id="y2" value={y2} onChange={setY2} />
                 </div>
               </div>
               <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
@@ -110,12 +110,12 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="from3">From</Label>
-                  <Input id="from3" type="number" className="h-12" value={from3} onChange={(e) => setFrom3(e.target.value)} />
+                  <CurrencyInput id="from3" value={from3} onChange={setFrom3} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">to</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="to3">To</Label>
-                  <Input id="to3" type="number" className="h-12" value={to3} onChange={(e) => setTo3(e.target.value)} />
+                  <CurrencyInput id="to3" value={to3} onChange={setTo3} />
                 </div>
               </div>
               <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
@@ -142,17 +142,20 @@ export default function PercentageCalculator() {
         <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Percentage Calculator</h2>
           <p>
-            Percentages are used everywhere in daily life — from shopping discounts and tax calculations to grade scoring and financial analysis. This calculator provides three essential percentage operations in one convenient tool. The first mode finds a specific percentage of any number (e.g., 15% of 200 = 30). The second mode determines what percentage one number is of another (e.g., 30 is 15% of 200). The third mode calculates the percentage change between two values (e.g., from 80 to 100 is a 25% increase).
+            <strong>Percentages</strong> are used everywhere in daily life — from shopping discounts and <strong>tax calculations</strong> to grade scoring and financial analysis. This calculator provides three essential percentage operations in one convenient tool. The first mode finds a specific percentage of any number (e.g., 15% of 200 = 30). The second mode determines what percentage one number is of another (e.g., 30 is 15% of 200). The third mode calculates the <strong>percentage change</strong> between two values (e.g., from 80 to 100 is a 25% increase).
           </p>
           <p>
-            The formulas are straightforward: for &quot;X% of Y&quot; it is (X/100) * Y; for &quot;X is what % of Y&quot; it is (X/Y) * 100; and for percentage change it is ((New - Old) / |Old|) * 100. All calculations happen in real time as you enter your numbers, giving you instant results without clicking any buttons.
+            The formulas are straightforward: for <strong>&quot;X% of Y&quot;</strong> it is (X/100) × Y; for &quot;X is what % of Y&quot; it is (X/Y) × 100; and for percentage change it is <strong>((New − Old) / |Old|) × 100</strong>. All calculations happen in real time as you enter your numbers, giving you instant results without clicking any buttons.
           </p>
         </TabsContent>
         <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
-          <p>
-            Select the tab that matches your calculation needs. For &quot;X% of Y,&quot; enter the percentage and the number. For &quot;X is ?% of Y,&quot; enter both numbers. For &quot;% Change,&quot; enter the original and new values. Results update instantly as you type. The percentage change mode shows positive values in green (increase) and negative values in red (decrease).
-          </p>
+          <ul>
+            <li>Select the tab that matches your calculation needs: <strong>X% of Y</strong>, <strong>X is ?% of Y</strong>, or <strong>% Change</strong>.</li>
+            <li>Enter the required numbers in the input fields.</li>
+            <li>Results update instantly as you type.</li>
+            <li>The percentage change mode shows positive values in green (increase) and negative values in red (decrease).</li>
+          </ul>
         </TabsContent>
         <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
