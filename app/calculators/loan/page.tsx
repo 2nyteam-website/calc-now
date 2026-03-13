@@ -55,15 +55,15 @@ export default function LoanCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="amount">Loan Amount ($)</Label>
-              <Input id="amount" type="number" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <Input id="amount" type="number" className="h-12" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="term">Loan Term (Years)</Label>
-              <Input id="term" type="number" min="0" value={term} onChange={(e) => setTerm(e.target.value)} />
+              <Input id="term" type="number" className="h-12" min="0" value={term} onChange={(e) => setTerm(e.target.value)} />
             </div>
           </CardContent>
         </Card>
@@ -73,18 +73,18 @@ export default function LoanCalculator() {
             <CardTitle>Results</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Monthly Payment</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(monthlyPayment)}</p>
+            </div>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-3 border-b border-border">
-                <span className="text-muted-foreground">Monthly Payment</span>
-                <span className="text-2xl font-bold text-primary">${fmt(monthlyPayment)}</span>
-              </div>
               <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">Total Payment</span>
                 <span className="text-lg font-semibold">${fmt(totalPayment)}</span>
               </div>
               <div className="flex justify-between items-center py-3">
                 <span className="text-muted-foreground">Total Interest</span>
-                <span className="text-lg font-semibold text-red-400">${fmt(totalInterest)}</span>
+                <span className="text-lg font-semibold text-red-600">${fmt(totalInterest)}</span>
               </div>
             </div>
           </CardContent>
@@ -97,7 +97,7 @@ export default function LoanCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Loan Calculator</h2>
           <p>
             This loan calculator helps you estimate your monthly payments and the total cost of borrowing. It works for personal loans, auto loans, student loans, and any fixed-rate installment loan. The calculator uses the standard amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1], where M is the monthly payment, P is the principal (loan amount), r is the monthly interest rate, and n is the total number of payments.
@@ -109,7 +109,7 @@ export default function LoanCalculator() {
             This tool is designed for fixed-rate loans with equal monthly payments. Variable-rate loans or loans with balloon payments may require different calculations. All calculations are performed instantly in your browser with no data transmitted to any server.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter the loan amount (the total amount you plan to borrow), the annual interest rate offered by your lender, and the loan term in years. Results update instantly as you type. The calculator shows your monthly payment amount, total payment over the life of the loan, and how much of that total is interest.
@@ -118,7 +118,7 @@ export default function LoanCalculator() {
             Try adjusting the term to see how shorter or longer repayment periods affect your monthly payment and total interest. A shorter term means higher monthly payments but significantly less interest paid overall.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Does this work for car loans?</strong> Yes, this calculator works for any fixed-rate installment loan including auto loans, personal loans, and student loans.</p>
           <p><strong>What about variable rate loans?</strong> This calculator assumes a fixed interest rate. For variable rates, results will only be accurate for the initial fixed period.</p>

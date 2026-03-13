@@ -143,7 +143,7 @@ export default function UnitConverter() {
                   id="fromUnit"
                   value={fromUnit}
                   onChange={(e) => setFromUnit(e.target.value)}
-                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  className="flex h-12 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   {unitKeys.map((k) => (
                     <option key={k} value={k}>{units[k].label}</option>
@@ -154,7 +154,7 @@ export default function UnitConverter() {
                 <Label htmlFor="fromVal">Value</Label>
                 <Input
                   id="fromVal"
-                  type="number"
+                  type="number" className="h-12"
                   value={lastEdited === "from" ? fromValue : formatResult(fromVal)}
                   onChange={(e) => handleFromValueChange(e.target.value)}
                 />
@@ -174,7 +174,7 @@ export default function UnitConverter() {
                   id="toUnit"
                   value={toUnit}
                   onChange={(e) => setToUnit(e.target.value)}
-                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  className="flex h-12 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   {unitKeys.map((k) => (
                     <option key={k} value={k}>{units[k].label}</option>
@@ -185,7 +185,7 @@ export default function UnitConverter() {
                 <Label htmlFor="toVal">Value</Label>
                 <Input
                   id="toVal"
-                  type="number"
+                  type="number" className="h-12"
                   value={lastEdited === "to" ? toValue : formatResult(toVal)}
                   onChange={(e) => handleToValueChange(e.target.value)}
                 />
@@ -193,11 +193,11 @@ export default function UnitConverter() {
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-muted rounded-lg text-center" aria-live="polite">
+          <div className="mt-6 p-5 bg-blue-50 rounded-lg text-center" aria-live="polite">
             <p className="text-lg">
               <span className="font-semibold">{formatResult(fromVal)} {units[fromUnit].label}</span>
               <span className="text-muted-foreground mx-2">=</span>
-              <span className="font-bold text-primary text-xl">{formatResult(toVal)} {units[toUnit].label}</span>
+              <span className="font-bold text-blue-700 text-3xl">{formatResult(toVal)} {units[toUnit].label}</span>
             </p>
           </div>
         </CardContent>
@@ -230,7 +230,7 @@ export default function UnitConverter() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Unit Converter</h2>
           <p>
             This unit converter supports three major categories of measurement: length, weight, and temperature. It handles conversions between both metric and imperial systems, making it useful for travel, cooking, science, engineering, and everyday tasks. All conversions use precise conversion factors for accurate results.
@@ -242,13 +242,13 @@ export default function UnitConverter() {
             The quick reference table below the main converter shows your input value converted to all available units at once, saving time when you need multiple conversions. The swap button lets you instantly reverse the conversion direction.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Select a category (Length, Weight, or Temperature), choose your source and target units from the dropdowns, and enter a value. The conversion happens instantly. Use the swap button (arrows) to reverse the direction. The quick reference table below shows the value converted to all units in the selected category.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>How accurate are the conversions?</strong> Conversions use standard factors (e.g., 1 inch = 0.0254 meters exactly). Results are displayed with up to 6 decimal places for precision.</p>
           <p><strong>Why is temperature conversion different?</strong> Length and weight use simple multiplication, but temperature involves offsets (e.g., Fahrenheit has a +32 offset). The converter handles this correctly.</p>

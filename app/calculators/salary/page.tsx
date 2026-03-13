@@ -77,7 +77,7 @@ export default function SalaryCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="amount">Salary Amount ($)</Label>
-              <Input id="amount" type="number" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <Input id="amount" type="number" className="h-12" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label>Pay Period</Label>
@@ -96,11 +96,11 @@ export default function SalaryCalculator() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="hpw">Hours per Week</Label>
-              <Input id="hpw" type="number" min="1" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(e.target.value)} />
+              <Input id="hpw" type="number" className="h-12" min="1" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="wpy">Weeks per Year</Label>
-              <Input id="wpy" type="number" min="1" value={weeksPerYear} onChange={(e) => setWeeksPerYear(e.target.value)} />
+              <Input id="wpy" type="number" className="h-12" min="1" value={weeksPerYear} onChange={(e) => setWeeksPerYear(e.target.value)} />
             </div>
           </CardContent>
         </Card>
@@ -110,6 +110,10 @@ export default function SalaryCalculator() {
             <CardTitle>Salary Breakdown</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Annual Salary</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(annual)}</p>
+            </div>
             <div className="space-y-3">
               {[
                 { label: "Hourly", value: hourly },
@@ -117,13 +121,10 @@ export default function SalaryCalculator() {
                 { label: "Weekly", value: weekly },
                 { label: "Bi-Weekly", value: biWeekly },
                 { label: "Monthly", value: monthly },
-                { label: "Annual", value: annual },
               ].map((item) => (
                 <div key={item.label} className="flex justify-between items-center py-2 border-b border-border last:border-0">
                   <span className="text-muted-foreground">{item.label}</span>
-                  <span className={`font-semibold ${item.label === "Annual" ? "text-2xl text-primary" : "text-lg"}`}>
-                    ${fmt(item.value)}
-                  </span>
+                  <span className="text-lg font-semibold">${fmt(item.value)}</span>
                 </div>
               ))}
             </div>
@@ -137,7 +138,7 @@ export default function SalaryCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Salary Calculator</h2>
           <p>
             Whether you are evaluating a job offer, negotiating a raise, or converting between pay periods, this salary calculator makes it easy to see your earnings across all time frames. It converts between hourly, daily, weekly, bi-weekly, monthly, and annual pay using your specific work schedule.
@@ -149,13 +150,13 @@ export default function SalaryCalculator() {
             This tool is especially useful when comparing job offers that quote pay in different periods. A $25/hour job may sound different from a $52,000/year salary, but they are nearly equivalent at 40 hours per week. Use this calculator to make apples-to-apples comparisons.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter your salary amount and select the pay period (per hour, day, week, month, or year). Optionally adjust the hours per week and weeks per year if your schedule differs from the standard 40 hours, 52 weeks. The breakdown on the right instantly shows your equivalent pay for every time period.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Does this include taxes?</strong> No, this shows gross (pre-tax) salary conversions. Your take-home pay will be lower after federal, state, and local taxes.</p>
           <p><strong>How is bi-weekly different from twice a month?</strong> Bi-weekly means every 2 weeks (26 pay periods per year). Semi-monthly means twice a month (24 pay periods per year). This calculator shows bi-weekly.</p>

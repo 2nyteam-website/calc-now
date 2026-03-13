@@ -44,15 +44,15 @@ export default function DiscountCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="price">Original Price ($)</Label>
-              <Input id="price" type="number" min="0" step="0.01" value={originalPrice} onChange={(e) => setOriginalPrice(e.target.value)} />
+              <Input id="price" type="number" className="h-12" min="0" step="0.01" value={originalPrice} onChange={(e) => setOriginalPrice(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="disc1">Discount (%)</Label>
-              <Input id="disc1" type="number" min="0" max="100" value={discount1} onChange={(e) => setDiscount1(e.target.value)} />
+              <Input id="disc1" type="number" className="h-12" min="0" max="100" value={discount1} onChange={(e) => setDiscount1(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="disc2">Additional Discount (%, optional)</Label>
-              <Input id="disc2" type="number" min="0" max="100" value={discount2} onChange={(e) => setDiscount2(e.target.value)} placeholder="e.g., extra 10% off" />
+              <Input id="disc2" type="number" className="h-12" min="0" max="100" value={discount2} onChange={(e) => setDiscount2(e.target.value)} placeholder="e.g., extra 10% off" />
             </div>
           </CardContent>
         </Card>
@@ -62,6 +62,10 @@ export default function DiscountCalculator() {
             <CardTitle>Results</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Final Price</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(finalPrice)}</p>
+            </div>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">Original Price</span>
@@ -74,16 +78,12 @@ export default function DiscountCalculator() {
                 </div>
               )}
               <div className="flex justify-between items-center py-3 border-b border-border">
-                <span className="text-muted-foreground">Final Price</span>
-                <span className="text-2xl font-bold text-primary">${fmt(finalPrice)}</span>
-              </div>
-              <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">You Save</span>
-                <span className="text-lg font-semibold text-green-500">${fmt(totalSavings)}</span>
+                <span className="text-lg font-semibold text-green-600">${fmt(totalSavings)}</span>
               </div>
               <div className="flex justify-between items-center py-3">
                 <span className="text-muted-foreground">Effective Discount</span>
-                <span className="text-lg font-semibold text-green-500">{effectiveDiscount.toFixed(1)}%</span>
+                <span className="text-lg font-semibold text-green-600">{effectiveDiscount.toFixed(1)}%</span>
               </div>
             </div>
           </CardContent>
@@ -96,7 +96,7 @@ export default function DiscountCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Discount Calculator</h2>
           <p>
             Shopping sales can be confusing, especially when multiple discounts are stacked. This discount calculator instantly shows you the final price and total savings after applying one or two percentage discounts. It also calculates the effective total discount percentage, which is particularly useful when comparing stacked discounts.
@@ -108,13 +108,13 @@ export default function DiscountCalculator() {
             The formula is simple: Final Price = Original Price x (1 - Discount1/100) x (1 - Discount2/100). The savings are calculated as Original Price minus Final Price. This tool is perfect for Black Friday deals, coupon stacking, clearance sales, or any situation where you need to quickly figure out the actual price.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter the original price of the item, then the discount percentage. If there is an additional discount (like an extra coupon or member discount), enter it in the second field. Leave the additional discount empty if there is only one discount. Results update instantly showing your final price, savings, and effective discount rate.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Does the order of discounts matter?</strong> No, mathematically the result is the same regardless of which discount is applied first. 20% then 10% gives the same result as 10% then 20%.</p>
           <p><strong>Why is 20% + 10% not 30%?</strong> The second discount applies to the already-reduced price. 20% off $100 = $80, then 10% off $80 = $72. That is a 28% total discount, not 30%.</p>

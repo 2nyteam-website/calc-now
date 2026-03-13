@@ -44,16 +44,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         {/* Header */}
-        <header className="border-b border-border bg-card">
+        <header className="border-b border-border bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <Link href="/" className="text-xl font-bold tracking-tight">
               <span className="text-primary">Calc</span>
-              <span className="text-muted-foreground">Now</span>
+              <span className="text-gray-700">Now</span>
             </Link>
             <nav className="hidden md:flex items-center gap-4 text-sm">
               <Link href="/all-calculators" className="text-muted-foreground hover:text-foreground transition-colors">

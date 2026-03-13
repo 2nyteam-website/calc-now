@@ -61,15 +61,15 @@ export default function MortgageCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="price">Home Price ($)</Label>
-              <Input id="price" type="number" min="0" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} />
+              <Input id="price" type="number" className="h-12" min="0" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="down">Down Payment (%)</Label>
-              <Input id="down" type="number" min="0" max="100" value={downPct} onChange={(e) => setDownPct(e.target.value)} />
+              <Input id="down" type="number" className="h-12" min="0" max="100" value={downPct} onChange={(e) => setDownPct(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="term">Loan Term (Years)</Label>
@@ -78,7 +78,7 @@ export default function MortgageCalculator() {
                 <Button variant={termYears === "20" ? "default" : "outline"} size="sm" onClick={() => setTermYears("20")}>20 yr</Button>
                 <Button variant={termYears === "30" ? "default" : "outline"} size="sm" onClick={() => setTermYears("30")}>30 yr</Button>
               </div>
-              <Input id="term" type="number" min="0" value={termYears} onChange={(e) => setTermYears(e.target.value)} />
+              <Input id="term" type="number" className="h-12" min="0" value={termYears} onChange={(e) => setTermYears(e.target.value)} />
             </div>
           </CardContent>
         </Card>
@@ -88,11 +88,11 @@ export default function MortgageCalculator() {
             <CardTitle>Results</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Monthly Payment</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(monthlyPayment)}</p>
+            </div>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-3 border-b border-border">
-                <span className="text-muted-foreground">Monthly Payment</span>
-                <span className="text-2xl font-bold text-primary">${fmt(monthlyPayment)}</span>
-              </div>
               <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">Down Payment</span>
                 <span className="text-lg font-semibold">${fmt(downPayment)}</span>
@@ -107,7 +107,7 @@ export default function MortgageCalculator() {
               </div>
               <div className="flex justify-between items-center py-3">
                 <span className="text-muted-foreground">Total Interest</span>
-                <span className="text-lg font-semibold text-red-400">${fmt(totalInterest)}</span>
+                <span className="text-lg font-semibold text-red-600">${fmt(totalInterest)}</span>
               </div>
             </div>
           </CardContent>
@@ -120,7 +120,7 @@ export default function MortgageCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Mortgage Calculator</h2>
           <p>
             A mortgage is typically the largest financial commitment most people will make. This mortgage calculator helps you understand the true cost of buying a home by factoring in the home price, down payment, interest rate, and loan term. It uses the standard amortization formula to calculate your fixed monthly payment.
@@ -132,7 +132,7 @@ export default function MortgageCalculator() {
             Comparing 15-year and 30-year terms is important. A 15-year mortgage has higher monthly payments but saves you tens of thousands of dollars in interest. Use the term buttons to quickly compare options.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter the home price you are considering, your down payment as a percentage, the interest rate from your lender, and choose a loan term. Click the 15, 20, or 30 year buttons for quick selection, or type a custom term. All results update instantly.
@@ -141,7 +141,7 @@ export default function MortgageCalculator() {
             The results show your estimated monthly principal and interest payment, down payment amount, total loan amount, total payment over the full term, and total interest cost. Try different scenarios to find the right balance between monthly affordability and total cost.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Does this include taxes and insurance?</strong> No, this calculates principal and interest only. Your actual payment will include property taxes, insurance, and possibly PMI.</p>
           <p><strong>What is a good down payment?</strong> 20% is ideal to avoid PMI, but many people buy with 3-10% down. The more you put down, the less you pay in interest.</p>

@@ -47,7 +47,7 @@ export default function TipCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="bill">Bill Amount ($)</Label>
-              <Input id="bill" type="number" min="0" step="0.01" value={bill} onChange={(e) => setBill(e.target.value)} />
+              <Input id="bill" type="number" className="h-12" min="0" step="0.01" value={bill} onChange={(e) => setBill(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label>Tip Percentage</Label>
@@ -63,11 +63,11 @@ export default function TipCalculator() {
                   </Button>
                 ))}
               </div>
-              <Input id="tipPct" type="number" min="0" value={tipPct} onChange={(e) => setTipPct(e.target.value)} placeholder="Custom %" />
+              <Input id="tipPct" type="number" className="h-12" min="0" value={tipPct} onChange={(e) => setTipPct(e.target.value)} placeholder="Custom %" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="people">Number of People</Label>
-              <Input id="people" type="number" min="1" value={people} onChange={(e) => setPeople(e.target.value)} />
+              <Input id="people" type="number" className="h-12" min="1" value={people} onChange={(e) => setPeople(e.target.value)} />
             </div>
           </CardContent>
         </Card>
@@ -77,6 +77,10 @@ export default function TipCalculator() {
             <CardTitle>Results</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Total per Person</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(totalPerPerson)}</p>
+            </div>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">Tip Amount</span>
@@ -87,17 +91,11 @@ export default function TipCalculator() {
                 <span className="text-lg font-semibold">${fmt(totalBill)}</span>
               </div>
               {numPeople > 1 && (
-                <>
-                  <div className="flex justify-between items-center py-3 border-b border-border">
-                    <span className="text-muted-foreground">Tip per Person</span>
-                    <span className="text-lg font-semibold">${fmt(tipPerPerson)}</span>
-                  </div>
-                </>
+                <div className="flex justify-between items-center py-3 border-b border-border">
+                  <span className="text-muted-foreground">Tip per Person</span>
+                  <span className="text-lg font-semibold">${fmt(tipPerPerson)}</span>
+                </div>
               )}
-              <div className="flex justify-between items-center py-3">
-                <span className="text-muted-foreground">Total per Person</span>
-                <span className="text-2xl font-bold text-primary">${fmt(totalPerPerson)}</span>
-              </div>
             </div>
           </CardContent>
         </Card>
@@ -109,7 +107,7 @@ export default function TipCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Tip Calculator</h2>
           <p>
             Tipping is a customary practice in many countries, especially in the United States where it forms a significant portion of service workers&apos; income. This tip calculator helps you quickly determine the appropriate tip amount based on your bill and desired tip percentage, and evenly splits the total among your group.
@@ -121,13 +119,13 @@ export default function TipCalculator() {
             The formula is straightforward: Tip = Bill Amount x (Tip Percentage / 100). The total per person is (Bill + Tip) / Number of People. All calculations happen instantly in your browser.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter your bill amount, select a tip percentage using the preset buttons or type a custom percentage, and enter the number of people splitting the bill. The results show the tip amount, total bill, and each person&apos;s share instantly. Adjusting any input updates results in real time.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>What is the standard tip percentage?</strong> In the US, 15-20% is standard for restaurants. 18% is a popular middle ground.</p>
           <p><strong>Should I tip on tax?</strong> Traditionally, you tip on the pre-tax amount. Enter the pre-tax bill amount for the most accurate calculation.</p>

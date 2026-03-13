@@ -10,10 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function getBmiCategory(bmi: number): { label: string; color: string } {
-  if (bmi < 18.5) return { label: "Underweight", color: "text-blue-400" };
-  if (bmi < 25) return { label: "Normal weight", color: "text-green-500" };
-  if (bmi < 30) return { label: "Overweight", color: "text-yellow-400" };
-  return { label: "Obese", color: "text-red-400" };
+  if (bmi < 18.5) return { label: "Underweight", color: "text-blue-600" };
+  if (bmi < 25) return { label: "Normal weight", color: "text-green-600" };
+  if (bmi < 30) return { label: "Overweight", color: "text-yellow-600" };
+  return { label: "Obese", color: "text-red-600" };
 }
 
 export default function BmiCalculator() {
@@ -66,27 +66,27 @@ export default function BmiCalculator() {
               <>
                 <div className="space-y-2">
                   <Label htmlFor="weightKg">Weight (kg)</Label>
-                  <Input id="weightKg" type="number" min="0" step="0.1" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} />
+                  <Input id="weightKg" type="number" className="h-12" min="0" step="0.1" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="heightCm">Height (cm)</Label>
-                  <Input id="heightCm" type="number" min="0" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} />
+                  <Input id="heightCm" type="number" className="h-12" min="0" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} />
                 </div>
               </>
             ) : (
               <>
                 <div className="space-y-2">
                   <Label htmlFor="weightLbs">Weight (lbs)</Label>
-                  <Input id="weightLbs" type="number" min="0" step="0.1" value={weightLbs} onChange={(e) => setWeightLbs(e.target.value)} />
+                  <Input id="weightLbs" type="number" className="h-12" min="0" step="0.1" value={weightLbs} onChange={(e) => setWeightLbs(e.target.value)} />
                 </div>
                 <div className="flex gap-3">
                   <div className="space-y-2 flex-1">
                     <Label htmlFor="heightFt">Height (ft)</Label>
-                    <Input id="heightFt" type="number" min="0" value={heightFt} onChange={(e) => setHeightFt(e.target.value)} />
+                    <Input id="heightFt" type="number" className="h-12" min="0" value={heightFt} onChange={(e) => setHeightFt(e.target.value)} />
                   </div>
                   <div className="space-y-2 flex-1">
                     <Label htmlFor="heightIn">Height (in)</Label>
-                    <Input id="heightIn" type="number" min="0" max="11" value={heightIn} onChange={(e) => setHeightIn(e.target.value)} />
+                    <Input id="heightIn" type="number" className="h-12" min="0" max="11" value={heightIn} onChange={(e) => setHeightIn(e.target.value)} />
                   </div>
                 </div>
               </>
@@ -100,26 +100,26 @@ export default function BmiCalculator() {
           </CardHeader>
           <CardContent aria-live="polite">
             <div className="space-y-4">
-              <div className="text-center py-6">
-                <p className="text-sm text-muted-foreground mb-2">Your BMI</p>
+              <div className="bg-blue-50 rounded-lg p-5 text-center">
+                <p className="text-sm text-blue-600 mb-2">Your BMI</p>
                 <p className={`text-5xl font-bold ${category.color}`}>{bmi > 0 ? bmi.toFixed(1) : "--"}</p>
                 <p className={`text-xl font-semibold mt-2 ${category.color}`}>{bmi > 0 ? category.label : "Enter your data"}</p>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between py-1">
-                  <span className="text-blue-400">Underweight</span>
+                  <span className="text-blue-600">Underweight</span>
                   <span className="text-muted-foreground">&lt; 18.5</span>
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-green-500">Normal weight</span>
+                  <span className="text-green-600">Normal weight</span>
                   <span className="text-muted-foreground">18.5 - 24.9</span>
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-yellow-400">Overweight</span>
+                  <span className="text-yellow-600">Overweight</span>
                   <span className="text-muted-foreground">25.0 - 29.9</span>
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-red-400">Obese</span>
+                  <span className="text-red-600">Obese</span>
                   <span className="text-muted-foreground">&ge; 30.0</span>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function BmiCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the BMI Calculator</h2>
           <p>
             Body Mass Index (BMI) is a widely used screening tool to assess whether a person has a healthy body weight relative to their height. It is calculated by dividing weight in kilograms by height in meters squared (BMI = kg/m2). For imperial units, the formula is BMI = (weight in lbs x 703) / (height in inches)2. While BMI does not directly measure body fat, it correlates with more direct measures of body fat and is a useful initial screening tool.
@@ -146,13 +146,13 @@ export default function BmiCalculator() {
             This tool supports both metric and imperial units for your convenience. Always consult a healthcare professional for a comprehensive health assessment beyond BMI alone.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Select your preferred unit system — Metric (kg and cm) or Imperial (lbs, feet, and inches). Enter your weight and height. Your BMI value and category will appear instantly with a color-coded indicator. The reference chart below the result shows all BMI categories for easy comparison.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Is BMI accurate for athletes?</strong> BMI may overestimate body fat in muscular individuals. Athletes with high muscle mass may have a high BMI but low body fat.</p>
           <p><strong>Does BMI differ by age or gender?</strong> Standard BMI categories are the same for all adults. For children and teens, BMI is age- and sex-specific (BMI percentile).</p>

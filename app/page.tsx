@@ -51,9 +51,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cat.tools.map((tool) => (
               <Link key={tool.href} href={tool.href}>
-                <Card className="h-full hover:border-primary/50 transition-colors cursor-pointer">
+                <Card className="h-full hover:border-blue-400 hover:shadow-md transition-all cursor-pointer">
                   <CardContent className="pt-6">
-                    <h3 className="font-semibold text-sm">{tool.name}</h3>
+                    <h3 className="font-semibold text-sm text-gray-900">{tool.name}</h3>
                     <p className="text-muted-foreground text-xs mt-1">{tool.desc}</p>
                   </CardContent>
                 </Card>

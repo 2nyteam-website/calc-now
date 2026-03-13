@@ -56,19 +56,19 @@ export default function CompoundInterestCalculator() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="principal">Initial Investment ($)</Label>
-              <Input id="principal" type="number" min="0" value={principal} onChange={(e) => setPrincipal(e.target.value)} />
+              <Input id="principal" type="number" className="h-12" min="0" value={principal} onChange={(e) => setPrincipal(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="monthly">Monthly Contribution ($)</Label>
-              <Input id="monthly" type="number" min="0" value={monthly} onChange={(e) => setMonthly(e.target.value)} />
+              <Input id="monthly" type="number" className="h-12" min="0" value={monthly} onChange={(e) => setMonthly(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual Interest Rate (%)</Label>
-              <Input id="rate" type="number" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
+              <Input id="rate" type="number" className="h-12" min="0" step="0.1" value={rate} onChange={(e) => setRate(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="years">Investment Period (Years)</Label>
-              <Input id="years" type="number" min="0" value={years} onChange={(e) => setYears(e.target.value)} />
+              <Input id="years" type="number" className="h-12" min="0" value={years} onChange={(e) => setYears(e.target.value)} />
             </div>
           </CardContent>
         </Card>
@@ -78,18 +78,18 @@ export default function CompoundInterestCalculator() {
             <CardTitle>Results</CardTitle>
           </CardHeader>
           <CardContent aria-live="polite">
+            <div className="bg-blue-50 rounded-lg p-5 mb-4 text-center">
+              <p className="text-sm text-blue-600 mb-1">Future Value</p>
+              <p className="text-4xl font-bold text-blue-700">${fmt(futureValue)}</p>
+            </div>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-3 border-b border-border">
-                <span className="text-muted-foreground">Future Value</span>
-                <span className="text-2xl font-bold text-primary">${fmt(futureValue)}</span>
-              </div>
               <div className="flex justify-between items-center py-3 border-b border-border">
                 <span className="text-muted-foreground">Total Contributions</span>
                 <span className="text-lg font-semibold">${fmt(totalContributions)}</span>
               </div>
               <div className="flex justify-between items-center py-3">
                 <span className="text-muted-foreground">Total Interest Earned</span>
-                <span className="text-lg font-semibold text-green-500">${fmt(totalInterest)}</span>
+                <span className="text-lg font-semibold text-green-600">${fmt(totalInterest)}</span>
               </div>
             </div>
           </CardContent>
@@ -103,7 +103,7 @@ export default function CompoundInterestCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Compound Interest Calculator</h2>
           <p>
             Compound interest is one of the most powerful concepts in finance. Unlike simple interest, which is calculated only on the initial principal, compound interest is calculated on the principal plus all previously accumulated interest. This means your money grows exponentially over time, often referred to as &quot;interest on interest.&quot;
@@ -115,7 +115,7 @@ export default function CompoundInterestCalculator() {
             Understanding compound interest is essential for retirement planning, investment decisions, and building long-term wealth. Even small regular contributions can grow into substantial amounts over decades thanks to compounding.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Enter your initial investment amount, which is the lump sum you are starting with. Then enter your planned monthly contribution — the amount you will add each month. Set the expected annual interest rate (stock market historical average is roughly 7-10%). Finally, enter the number of years you plan to invest.
@@ -124,7 +124,7 @@ export default function CompoundInterestCalculator() {
             The results update in real time as you type. You will see three key numbers: the future value (total amount you will have), total contributions (what you actually put in), and total interest earned (free money from compounding). Compare different scenarios by adjusting the inputs to see how time, rate, and contributions affect your outcome.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>How often is interest compounded?</strong> This calculator compounds monthly (12 times per year), which is the most common compounding frequency for savings accounts and investments.</p>
           <p><strong>Is this calculator accurate?</strong> Yes, it uses the standard financial compound interest formula. However, real-world returns may vary due to market fluctuations, fees, and taxes.</p>

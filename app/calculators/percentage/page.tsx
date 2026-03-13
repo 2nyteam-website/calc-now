@@ -58,17 +58,17 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="pct1">Percentage (%)</Label>
-                  <Input id="pct1" type="number" value={pct1} onChange={(e) => setPct1(e.target.value)} />
+                  <Input id="pct1" type="number" className="h-12" value={pct1} onChange={(e) => setPct1(e.target.value)} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">% of</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="val1">Number</Label>
-                  <Input id="val1" type="number" value={val1} onChange={(e) => setVal1(e.target.value)} />
+                  <Input id="val1" type="number" className="h-12" value={val1} onChange={(e) => setVal1(e.target.value)} />
                 </div>
               </div>
-              <div className="p-4 bg-muted rounded-lg" aria-live="polite">
-                <p className="text-sm text-muted-foreground">Result</p>
-                <p className="text-2xl font-bold text-primary">{fmt(result1)}</p>
+              <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
+                <p className="text-sm text-blue-600">Result</p>
+                <p className="text-4xl font-bold text-blue-700">{fmt(result1)}</p>
                 <p className="text-sm text-muted-foreground mt-1">{pct1}% of {val1} = {fmt(result1)}</p>
               </div>
             </CardContent>
@@ -84,17 +84,17 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="x2">Number (X)</Label>
-                  <Input id="x2" type="number" value={x2} onChange={(e) => setX2(e.target.value)} />
+                  <Input id="x2" type="number" className="h-12" value={x2} onChange={(e) => setX2(e.target.value)} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">is ?% of</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="y2">Number (Y)</Label>
-                  <Input id="y2" type="number" value={y2} onChange={(e) => setY2(e.target.value)} />
+                  <Input id="y2" type="number" className="h-12" value={y2} onChange={(e) => setY2(e.target.value)} />
                 </div>
               </div>
-              <div className="p-4 bg-muted rounded-lg" aria-live="polite">
-                <p className="text-sm text-muted-foreground">Result</p>
-                <p className="text-2xl font-bold text-primary">{fmt(result2)}%</p>
+              <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
+                <p className="text-sm text-blue-600">Result</p>
+                <p className="text-4xl font-bold text-blue-700">{fmt(result2)}%</p>
                 <p className="text-sm text-muted-foreground mt-1">{x2} is {fmt(result2)}% of {y2}</p>
               </div>
             </CardContent>
@@ -110,17 +110,17 @@ export default function PercentageCalculator() {
               <div className="flex items-end gap-3">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="from3">From</Label>
-                  <Input id="from3" type="number" value={from3} onChange={(e) => setFrom3(e.target.value)} />
+                  <Input id="from3" type="number" className="h-12" value={from3} onChange={(e) => setFrom3(e.target.value)} />
                 </div>
                 <span className="pb-2 text-muted-foreground font-semibold">to</span>
                 <div className="space-y-2 flex-1">
                   <Label htmlFor="to3">To</Label>
-                  <Input id="to3" type="number" value={to3} onChange={(e) => setTo3(e.target.value)} />
+                  <Input id="to3" type="number" className="h-12" value={to3} onChange={(e) => setTo3(e.target.value)} />
                 </div>
               </div>
-              <div className="p-4 bg-muted rounded-lg" aria-live="polite">
-                <p className="text-sm text-muted-foreground">Percentage Change</p>
-                <p className={`text-2xl font-bold ${result3 >= 0 ? "text-green-500" : "text-red-400"}`}>
+              <div className="p-5 bg-blue-50 rounded-lg" aria-live="polite">
+                <p className="text-sm text-blue-600">Percentage Change</p>
+                <p className={`text-4xl font-bold ${result3 >= 0 ? "text-green-600" : "text-red-600"}`}>
                   {result3 >= 0 ? "+" : ""}{fmt(result3)}%
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -139,7 +139,7 @@ export default function PercentageCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Percentage Calculator</h2>
           <p>
             Percentages are used everywhere in daily life — from shopping discounts and tax calculations to grade scoring and financial analysis. This calculator provides three essential percentage operations in one convenient tool. The first mode finds a specific percentage of any number (e.g., 15% of 200 = 30). The second mode determines what percentage one number is of another (e.g., 30 is 15% of 200). The third mode calculates the percentage change between two values (e.g., from 80 to 100 is a 25% increase).
@@ -148,13 +148,13 @@ export default function PercentageCalculator() {
             The formulas are straightforward: for &quot;X% of Y&quot; it is (X/100) * Y; for &quot;X is what % of Y&quot; it is (X/Y) * 100; and for percentage change it is ((New - Old) / |Old|) * 100. All calculations happen in real time as you enter your numbers, giving you instant results without clicking any buttons.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Select the tab that matches your calculation needs. For &quot;X% of Y,&quot; enter the percentage and the number. For &quot;X is ?% of Y,&quot; enter both numbers. For &quot;% Change,&quot; enter the original and new values. Results update instantly as you type. The percentage change mode shows positive values in green (increase) and negative values in red (decrease).
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>Can I use negative numbers?</strong> Yes, the calculator handles negative numbers correctly. Percentage change from a negative to a positive value works as expected.</p>
           <p><strong>What if the &quot;from&quot; value is zero?</strong> Percentage change from zero is undefined (division by zero), so the result will show 0%. This is a mathematical limitation.</p>

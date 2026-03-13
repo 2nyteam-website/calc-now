@@ -80,7 +80,7 @@ export default function AgeCalculator() {
               <Label htmlFor="birthdate">Date of Birth</Label>
               <Input
                 id="birthdate"
-                type="date"
+                type="date" className="h-12"
                 value={birthDateStr}
                 onChange={(e) => setBirthDateStr(e.target.value)}
                 max={new Date().toISOString().split("T")[0]}
@@ -96,19 +96,19 @@ export default function AgeCalculator() {
           <CardContent aria-live="polite">
             {result ? (
               <div className="space-y-4">
-                <div className="text-center py-4">
+                <div className="bg-blue-50 rounded-lg p-5 text-center">
                   <div className="flex justify-center gap-6">
                     <div>
-                      <p className="text-4xl font-bold text-primary">{result.years}</p>
-                      <p className="text-sm text-muted-foreground">Years</p>
+                      <p className="text-4xl font-bold text-blue-700">{result.years}</p>
+                      <p className="text-sm text-blue-600">Years</p>
                     </div>
                     <div>
-                      <p className="text-4xl font-bold text-primary">{result.months}</p>
-                      <p className="text-sm text-muted-foreground">Months</p>
+                      <p className="text-4xl font-bold text-blue-700">{result.months}</p>
+                      <p className="text-sm text-blue-600">Months</p>
                     </div>
                     <div>
-                      <p className="text-4xl font-bold text-primary">{result.days}</p>
-                      <p className="text-sm text-muted-foreground">Days</p>
+                      <p className="text-4xl font-bold text-blue-700">{result.days}</p>
+                      <p className="text-sm text-blue-600">Days</p>
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function AgeCalculator() {
           <TabsTrigger value="how-to">How to Use</TabsTrigger>
           <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
-        <TabsContent value="about" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="about" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">About the Age Calculator</h2>
           <p>
             This age calculator determines your exact age in years, months, and days from your date of birth. It accounts for varying month lengths and leap years to provide an accurate result. Beyond the basic age breakdown, it also shows your total age in months, weeks, and days, plus a countdown to your next birthday.
@@ -159,13 +159,13 @@ export default function AgeCalculator() {
             This tool is useful for official documentation, birthday planning, age verification, or just satisfying your curiosity about exactly how long you have been alive. All calculations are performed in your browser based on your system clock.
           </p>
         </TabsContent>
-        <TabsContent value="how-to" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="how-to" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">How to Use</h2>
           <p>
             Simply select or type your date of birth using the date picker. The calculator instantly shows your age broken down into years, months, and days, along with additional statistics like total days alive and days until your next birthday. The date must be in the past.
           </p>
         </TabsContent>
-        <TabsContent value="faq" className="prose prose-invert max-w-none mt-4 text-muted-foreground">
+        <TabsContent value="faq" className="prose prose max-w-none mt-4 text-muted-foreground">
           <h2 className="text-lg font-semibold text-foreground">Frequently Asked Questions</h2>
           <p><strong>How accurate is this?</strong> The calculator is accurate to the day, using proper date arithmetic that accounts for leap years and varying month lengths.</p>
           <p><strong>What timezone does it use?</strong> It uses your local system time to determine today&apos;s date.</p>
