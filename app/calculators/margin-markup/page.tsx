@@ -170,13 +170,13 @@ export default function MarginMarkupCalculator() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-border">
                   <span className="text-muted-foreground">Markup</span>
-                  <span className="text-lg font-semibold text-green-600">
+                  <span className={`text-lg font-semibold ${markupFromMargin === null ? "" : "text-green-600"}`}>
                     {markupFromMargin === null ? "N/A" : `${fmt(markupFromMargin)}%`}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="text-muted-foreground">Profit</span>
-                  <span className={`text-lg font-semibold ${profitFromMargin !== null && profitFromMargin >= 0 ? "text-green-600" : "text-red-600"}`}>
+                  <span className={`text-lg font-semibold ${profitFromMargin === null ? "" : profitFromMargin >= 0 ? "text-green-600" : "text-red-600"}`}>
                     {profitFromMargin === null ? "N/A" : `$${fmt(profitFromMargin)}`}
                   </span>
                 </div>

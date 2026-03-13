@@ -44,7 +44,7 @@ function getCharsetSize(useUpper: boolean, useLower: boolean, useNumbers: boolea
   if (useUpper) size += 26;
   if (useLower) size += 26;
   if (useNumbers) size += 10;
-  if (useSymbols) size += 32;
+  if (useSymbols) size += SYMBOLS.length;
   return size;
 }
 
