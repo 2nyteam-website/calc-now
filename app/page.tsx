@@ -57,7 +57,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold">
           Free Online <span className="text-primary">Calculators</span>
         </h1>
-        <p className="text-muted-foreground mt-3 text-lg max-w-2xl mx-auto">
+        <p className="text-muted-foreground mt-3 text-lg mx-auto">
           Fast, free, and private. All calculations happen in your browser — no data is ever sent to a server.
         </p>
         <Badge variant="secondary" className="mt-3">
