@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import NavDropdown from "@/components/nav-dropdown";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,10 +56,8 @@ export default function RootLayout({
               <span className="text-primary">Calc</span>
               <span className="text-gray-700">Now</span>
             </Link>
-            <nav className="hidden md:flex items-center gap-4 text-sm">
-              <Link href="/all-calculators" className="text-muted-foreground hover:text-foreground transition-colors">
-                All Calculators
-              </Link>
+            <nav className="flex items-center gap-4 text-sm">
+              <NavDropdown />
             </nav>
           </div>
         </header>
