@@ -71,10 +71,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cat.tools.map((tool) => (
               <Link key={tool.href} href={tool.href}>
-                <Card className="h-full hover:border-blue-400 hover:shadow-md transition-all cursor-pointer">
-                  <CardContent className="pt-6">
+                <Card className="h-full hover:border-blue-400 hover:shadow-md transition-all cursor-pointer flex items-center">
+                  <CardContent className="py-4 px-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <tool.icon className="w-5 h-5 text-primary" />
+                      <tool.icon className="w-5 h-5 text-primary shrink-0" />
                       <h3 className="font-semibold text-sm text-gray-900">{tool.name}</h3>
                     </div>
                     <p className="text-muted-foreground text-xs mt-1">{tool.desc}</p>
