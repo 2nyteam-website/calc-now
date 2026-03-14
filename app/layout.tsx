@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import Link from "next/link";
 import NavDropdown from "@/components/nav-dropdown";
 import "./globals.css";
@@ -37,6 +38,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "CalcNow",
   },
+  verification: {
+    google: "MWc-Qooq8be1b-C9c8zilSyFpdR0SGsuum3kPPfr_8o",
+  },
 };
 
 export default function RootLayout({
@@ -46,6 +50,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FL9KB5D3C8"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FL9KB5D3C8');`}</Script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2080535898067346"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
