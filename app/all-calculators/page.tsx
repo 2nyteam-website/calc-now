@@ -56,8 +56,26 @@ const CALCULATORS = [
 ];
 
 export default function AllCalculatorsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "All Free Online Calculators",
+    description: "Browse all free online calculators on CalcNow.",
+    url: "https://www.calcnow.cc/all-calculators",
+    numberOfItems: 18,
+    itemListElement: CALCULATORS.flatMap((cat) =>
+      cat.tools.map((tool, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: tool.name,
+        url: `https://www.calcnow.cc${tool.href}`,
+      }))
+    ),
+  };
+
   return (
     <div className="space-y-8 py-4">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div>
         <h1 className="text-3xl font-bold tracking-tight">All Calculators</h1>
         <p className="text-muted-foreground mt-2">

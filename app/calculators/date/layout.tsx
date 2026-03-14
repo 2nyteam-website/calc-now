@@ -29,9 +29,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 "@type": "BreadcrumbList",
                 itemListElement: [
                   { "@type": "ListItem", position: 1, name: "Home", item: "https://www.calcnow.cc" },
+                  { "@type": "ListItem", position: 2, name: "All Calculators", item: "https://www.calcnow.cc/all-calculators" },
                   {
                     "@type": "ListItem",
-                    position: 2,
+                    position: 3,
                     name: "Date Calculator",
                     item: "https://www.calcnow.cc/calculators/date",
                   },
